@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "imp": "node src/ImplementingTheArrayObject/ImpArrHard.js",
+    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "imp": "node src/ImplementingTheArrayObject/ImpArr.js",
     "dupl": "node src/findDuplicateNumber/findDuplicate.js",
     "word": "node src/wordsLength/wordsLength.js",
     "zeroes": "node src/moveZeros/moveZeros.js"
