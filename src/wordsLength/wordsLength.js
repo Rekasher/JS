@@ -1,4 +1,4 @@
-const {combinedLanguageRegex} = require("./languages.js");
+import {combinedLanguageRegex} from "./languages.js";
 
 const getWordsLength = (str) => {
 
@@ -22,4 +22,4 @@ const getWordsLength = (str) => {
     return result;
 }
 
-module.exports = {getWordsLength}
+export {getWordsLength}

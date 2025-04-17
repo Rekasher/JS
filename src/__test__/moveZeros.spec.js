@@ -1,4 +1,4 @@
-const {moveZeros} = require('./moveZeros');
+import {moveZeros} from "../moveZeros/moveZeros.js";
 
 describe('moveZeros', () => {
     it('should move zeros to the end of array', () => {

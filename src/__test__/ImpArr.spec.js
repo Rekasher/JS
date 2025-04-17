@@ -1,4 +1,4 @@
-const {List} = require('./ImpArrHard.js');
+import {List} from "../ImplementingTheArrayObject/ImpArrHard.js";
 
 describe('Work with array method without instance of array', () => {
 

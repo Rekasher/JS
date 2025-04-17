@@ -7,6 +7,6 @@ function moveZeros(arr) {
         'no zeros found';
 }
 
-module.exports = {moveZeros};
+export {moveZeros}
 
 

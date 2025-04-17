@@ -1,19 +1,25 @@
 {
   "name": "js",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "imp": "node src/ImplementingTheArrayObject/ImpArrHard.js",
     "dupl": "node src/findDuplicateNumber/findDuplicate.js",
     "word": "node src/wordsLength/wordsLength.js",
     "zeroes": "node src/moveZeros/moveZeros.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrey",
   "license": "ISC",
   "dependencies": {
     "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0"
   }
 }

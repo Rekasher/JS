@@ -1,5 +1,3 @@
-'use strict';
-
 class List {
     constructor(...args) {
         this.list = args;
@@ -178,4 +176,4 @@ class List {
 }
 
 
-module.exports = {List}
+export {List}

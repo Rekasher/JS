@@ -54,3 +54,5 @@ class List {
         return this.list.length;
     }
 }
+
+export {List}

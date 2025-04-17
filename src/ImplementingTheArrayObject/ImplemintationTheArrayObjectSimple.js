@@ -5,3 +5,5 @@ class List extends Array {
         super(...args);
     }
 }
+
+export {List}

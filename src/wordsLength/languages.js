@@ -22,4 +22,4 @@ const allowedCharsPattern = Object.values(languages)
 
 const combinedLanguageRegex = new RegExp(`[^${allowedCharsPattern}]`, 'g');
 
-module.exports = {combinedLanguageRegex};
+export {combinedLanguageRegex}

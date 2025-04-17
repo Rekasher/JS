@@ -20,4 +20,4 @@ const duplicateOrUnique = (arr) => {
     return null;
 }
 
-module.exports = {duplicateOrUnique};
+export {duplicateOrUnique};

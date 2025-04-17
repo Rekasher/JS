@@ -1,4 +1,4 @@
-const {duplicateOrUnique} = require('./findDuplicate.js');
+import {duplicateOrUnique} from '../findDuplicateNumber/findDuplicate.js';
 
 describe('findDuplicate', () => {
     it('should find the duplicate', () => {
