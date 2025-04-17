@@ -1,4 +1,4 @@
-import {combinedLanguageRegex} from "./languages.js";
+const {combinedLanguageRegex} = require("./languages.js");
 
 const getWordsLength = (str) => {
 
@@ -22,5 +22,4 @@ const getWordsLength = (str) => {
     return result;
 }
 
-console.log(getWordsLength('\n' + 'Witaj świecie)) так кЙ  [m]]] zasdФафыВśПсиво \n' +
-    'hej världen (kull-erbytta'));
+module.exports = {getWordsLength}

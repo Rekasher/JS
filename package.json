@@ -1,0 +1,19 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "imp": "node src/ImplementingTheArrayObject/ImpArrHard.js",
+    "dupl": "node src/findDuplicateNumber/findDuplicate.js",
+    "word": "node src/wordsLength/wordsLength.js",
+    "zeroes": "node src/moveZeros/moveZeros.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}

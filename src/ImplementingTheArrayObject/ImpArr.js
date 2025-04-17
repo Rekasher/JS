@@ -1,7 +1,5 @@
 'use strict';
 
-import check from "./testLogs.js";
-
 class List {
     constructor(...args) {
         this.list = args;
@@ -56,7 +54,3 @@ class List {
         return this.list.length;
     }
 }
-
-let list = new List(1, 2, 3);
-
-check(list);

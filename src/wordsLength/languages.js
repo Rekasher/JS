@@ -1,4 +1,4 @@
-export const languages = {
+const languages = {
     LAT: /[^$A-Za-z0-9_]/, // латиница
     RUS: /[^а-яА-ЯёЁ0-9]/, // россия
     BLR: /[^ёа-зй-шы-яЁА-ЗЙ-ШЫІіЎў]/, // беларусь
@@ -20,4 +20,6 @@ const allowedCharsPattern = Object.values(languages)
     .map(src => src.replace(/^\[\^/, '').replace(/\]$/, '')) // убираем ^ и ]
     .join(''); // объединяем все допустимые символы
 
-export const combinedLanguageRegex = new RegExp(`[^${allowedCharsPattern}]`, 'g');
+const combinedLanguageRegex = new RegExp(`[^${allowedCharsPattern}]`, 'g');
+
+module.exports = {combinedLanguageRegex};

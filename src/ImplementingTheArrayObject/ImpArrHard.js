@@ -1,7 +1,5 @@
 'use strict';
 
-import check from "./testLogs.js";
-
 class List {
     constructor(...args) {
         this.list = args;
@@ -64,7 +62,7 @@ class List {
         let popList = [];
         const popeElement = this.list[this.list.length - 1];
 
-        for (let i = 0; i < this.list.length-1; i++) {
+        for (let i = 0; i < this.list.length - 1; i++) {
             popList[i] = this.list[i];
         }
 
@@ -77,8 +75,8 @@ class List {
         let shiftList = [];
         const shiftElement = this.list[0];
 
-        for (let i = 0; i < this.list.length-1; i++) {
-            shiftList[i] = this.list[i+1];
+        for (let i = 0; i < this.list.length - 1; i++) {
+            shiftList[i] = this.list[i + 1];
         }
 
         this.list = shiftList;
@@ -88,7 +86,7 @@ class List {
 
     filter(callback) {
 
-        if (!callback) {
+        if (!callback || typeof callback !== "function") {
             return this.list
         }
 
@@ -96,7 +94,7 @@ class List {
         let j = 0;
 
         for (let i = 0; i < this.list.length; i++) {
-            if(callback(this.list[i])){
+            if (callback(this.list[i])) {
                 filteredList[j] = this.list[i];
                 j++;
             }
@@ -106,28 +104,32 @@ class List {
     }
 
     sort(callback = undefined) {
-            for (let j = this.list.length - 1; j > 0; j--) {
-                for (let i = 0; i < j; i++) {
-                    if (callback ? callback(this.list[i], this.list[i+1]) === 1 : String(this.list[i]) > String(this.list[i + 1])) {
-                        let temp = this.list[i];
-                        this.list[i] = this.list[i + 1];
-                        this.list[i + 1] = temp;
-                    }
+        if (callback !== undefined && typeof callback !== "function") {
+            return 'error callback should be a function';
+        }
+
+        for (let j = this.list.length - 1; j > 0; j--) {
+            for (let i = 0; i < j; i++) {
+                if (callback ? callback(this.list[i], this.list[i + 1]) === 1 : String(this.list[i]) > String(this.list[i + 1])) {
+                    let temp = this.list[i];
+                    this.list[i] = this.list[i + 1];
+                    this.list[i + 1] = temp;
                 }
             }
-            return this.list
+        }
+        return this.list
     }
 
     findDuplicate() {
         const listData = {}
 
         for (let i = 0; i < this.list.length; i++) {
-            listData[list[i]] = (listData[list[i]] || 0) + 1;
+            listData[this.list[i]] = (listData[this.list[i]] || 0) + 1;
         }
 
         for (let key in listData) {
             if (listData[key] === 2) {
-                return key;
+                return Number(key);
             }
         }
 
@@ -156,7 +158,7 @@ class List {
         for (let i = 0; i < this.list.length; i++) {
             if (Array.isArray(this.list[i]) && depth > 0) {
                 tempList = this.list[i];
-                flatList.push(...tempList.flat(depth-1));
+                flatList.push(...tempList.flat(depth - 1));
             } else {
                 flatList.push(this.list[i]);
             }
@@ -167,7 +169,7 @@ class List {
 
     get length() {
         let count = 0
-        for(let element of this.list) {
+        for (let element of this.list) {
             count++;
         }
 
@@ -175,24 +177,5 @@ class List {
     }
 }
 
-let list = new List(2,20,3,[2,33],[1,22222,[888,[1],777]], 3);
 
-// console.log(list.findDuplicate());
-// console.log(list.removeDuplicate());
-// console.log(list.sameWithArr([1,2,2,33,1,4]));
-//
-// function compareFn(a, b) {
-//     if (a < b) {
-//         return -1;
-//     } else if (a > b) {
-//         return 1;
-//     }
-//     return 0;
-// }
-
-// console.log(list.sort(compareFn));
-//
-// console.log(list.flat());
-// console.log(list.flat(Infinity));
-
-// check(list);
+module.exports = {List}
