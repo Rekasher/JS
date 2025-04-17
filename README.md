@@ -1,20 +1,28 @@
+## Implementation Array App
+
 ## Avialble Scripts
 In the project directory, you can run:
+
+### `npm run test`
+Runs the whole test files that we have
 
 ### `npm run imp`
 Runs the Find duplicate App
 
-### `npm run dpl`
+### `npm run dupl`
 Runs the Implementation Array App
 
-### `npm run wrd`
+### `npm run word`
 Runs Words length App
+
+### `npm run zeroes`
+Runs zeroes to the end of Array App
 
 
 
 ## Find duplicate App
 
-The main idea of an app is that we have to type of array:
+The main idea of an app is that we have two types of array:
 
 1. There are numbers 1 to n, only one number is
    duplicate(repeated two times), the other numbers are unique.
@@ -65,3 +73,14 @@ List of languages supported by the application u can find in languages.js:
 + UKR - ukrainian
 + FRA - french
 + SWE - swedish
+
+
+
+## Zeroes to the end App
+
+The main idea of an app is that we have an array:
+
+1. We should put all zeroes to the end of array and return it.
+
+
+2. If their no zeroes in array we should return message: "no zeros found".

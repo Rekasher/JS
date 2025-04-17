@@ -1,7 +1,3 @@
-'use strict';
-
-import check from "./testLogs.js";
-
 class List {
     constructor(...args) {
         this.list = args;
@@ -29,34 +25,125 @@ class List {
     }
 
     push(...values) {
-        this.list.push(...values);
+        values.forEach((value) => {
+            this.list[this.list.length] = value;
+        })
 
+        return this.list.length;
+    }
+
+    unshift(...values) {
+        this.list.forEach((value) => {
+            values[values.length] = value;
+        });
+
+        this.list = values;
         return this.list.length;
     }
 
     pop() {
-        return this.list.pop();
+        const pop = this.list[this.list.length - 1];
+        this.list = this.list.splice(0, this.list.length - 1);
+
+        return pop;
     }
 
     shift() {
-        return this.list.shift();
+        const shift = this.list[0];
+        this.list = this.list.splice(1);
+
+        return shift;
     }
 
-    unshift(...values) {
-        this.list.unshift(...values);
-
-        return this.list.length;
-    }
-
+    // +++
     filter(callback) {
-        return this.list.filter(callback);
+        if (!callback || typeof callback !== "function") {
+            return this.list
+        }
+
+        return this.list.reduce((filterArr, item, pos) => {
+            if (callback(item)) {
+                filterArr.push(item);
+            }
+            return filterArr
+        },[])
     }
 
+    // +++
+    sort(callback = undefined) {
+        if (callback !== undefined && typeof callback !== "function") {
+            return 'error callback should be a function';
+        }
+
+        for (let j = this.list.length - 1; j > 0; j--) {
+            for (let i = 0; i < j; i++) {
+                if (callback ? callback(this.list[i], this.list[i + 1]) === 1 : String(this.list[i]) > String(this.list[i + 1])) {
+                    let temp = this.list[i];
+                    this.list[i] = this.list[i + 1];
+                    this.list[i + 1] = temp;
+                }
+            }
+        }
+        return this.list
+    }
+
+    // +
+    findDuplicate() {
+        const numbersCountData = this.list.reduce((obj, item) => {
+            obj[item] = (obj[item] || 0) + 1;
+            return obj
+        }, {});
+
+        const duplicate = Object
+            .keys(numbersCountData)
+            .find(key => numbersCountData[key] === 2);
+        return duplicate !== undefined ? Number(duplicate) : false;
+    }
+
+    //+
+    removeDuplicate() {
+        return this.list.filter((item, pos) => {
+            return this.list.indexOf(item) === pos;
+        });
+    }
+
+    //+
+    sameWithArr(arr) {
+        if (!Array.isArray(arr))
+            return 'Error'
+
+        return this.list.filter((item, pos) => {
+            return arr.indexOf(item) !== -1 && this.list.indexOf(item) === pos;
+        });
+    }
+
+    //+++
+    flat(depth = 1) {
+        if(typeof depth !== "number" || Number.isNaN(depth)) {
+            return 'Error'
+        }
+
+        let tempList = new List();
+        return this.list.reduce((arr, value) => {
+            if (Array.isArray(value) && depth > 0) {
+                tempList = value;
+                arr.push(...tempList.flat(depth - 1));
+            } else {
+                arr.push(value);
+            }
+            return arr
+        }, []);
+    }
+
+    //+++
     get length() {
-        return this.list.length;
+        let count = 0
+        for (let element of this.list) {
+            count++;
+        }
+        return count;
     }
 }
 
-let list = new List(1, 2, 3);
 
-check(list);
+export {List}

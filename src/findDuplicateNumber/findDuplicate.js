@@ -1,7 +1,3 @@
-'use strict';
-
-import testLogs from "./testLogs.js";
-
 const duplicateOrUnique = (arr) => {
     const numbersData = {};
 
@@ -9,7 +5,7 @@ const duplicateOrUnique = (arr) => {
         numbersData[arr[i]] = (numbersData[arr[i]] || 0) + 1;
     }
 
-    const isUnique =  arr.length - Object.keys(numbersData).length === 1;
+    const isUnique = arr.length - Object.keys(numbersData).length === 1;
 
     for (const key in numbersData) {
         if (isUnique && numbersData[key] === 2) {
@@ -24,4 +20,4 @@ const duplicateOrUnique = (arr) => {
     return null;
 }
 
-testLogs(duplicateOrUnique);
+export {duplicateOrUnique};
