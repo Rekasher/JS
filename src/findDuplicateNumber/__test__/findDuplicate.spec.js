@@ -1,4 +1,4 @@
-import {duplicateOrUnique} from '../findDuplicateNumber/findDuplicate.js';
+import {duplicateOrUnique} from '../findDuplicate.js';
 
 describe('findDuplicate', () => {
     it('should find the duplicate', () => {

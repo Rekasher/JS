@@ -1,4 +1,4 @@
-import {getWordsLength} from "../wordsLength/wordsLength.js";
+import {getWordsLength} from "../wordsLength.js";
 
 describe('getWords and there length', () => {
     it('should return an array of objects with with info about words and there length', () => {

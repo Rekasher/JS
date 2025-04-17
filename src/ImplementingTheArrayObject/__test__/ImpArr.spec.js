@@ -1,4 +1,4 @@
-import {List} from "../ImplementingTheArrayObject/ImpArrHard.js";
+import {List} from "../ImpArrHard.js";
 
 describe('Work with array method without instance of array', () => {
 
