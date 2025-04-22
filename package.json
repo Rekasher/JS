@@ -4,7 +4,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "imp": "tsc src/ImplementingTheArrayObject/ImpArr.ts ",
+    "dupl": "tsc src/findDuplicateNumber/findDuplicate.ts",
+    "word": "tsc src/WordLength/WordLength.ts",
+    "zeroes": "tsc src/MoveZeros/MoveZeros.ts",
+    "cities": "tsc src/Countries/Countries.ts"
   },
   "author": "Andrew",
   "license": "ISC",

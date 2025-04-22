@@ -1,4 +1,4 @@
-import {apikey} from "../../cities";
+import {apikey} from "../../Countries";
 
 const getCountriesByName = async (name: string) => {
     const dataInfoLink = `https://api.countrylayer.com/v2/name/${name}?access_key=${apikey}&fullText=true`;

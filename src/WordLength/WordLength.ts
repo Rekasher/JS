@@ -18,7 +18,4 @@ const getWordsLength = (str: string) => {
     return result;
 }
 
-console.log(getWordsLength('\n' + 'Witaj świecie)) так кЙ  [m]]] zasdФафыВśПсиво \n' +
-    'hej världen (kull-erbytta'));
-
 export {getWordsLength}

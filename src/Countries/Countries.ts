@@ -13,4 +13,3 @@ const countryByName = await getCountriesByName("France");
 const countryByRegion = await getCountriesByRegion("Asia");
 const countriesOnE = allCountriesInfo.filter((country: ICountry) => country.name.startsWith('E'));
 
-console.log(countriesOnE);

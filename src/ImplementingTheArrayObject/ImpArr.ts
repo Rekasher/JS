@@ -130,24 +130,4 @@ class List {
 
 }
 
-
 let list: List = new List(1, 2, 3);
-
-// list.pop();
-// list.push(1,[1,[[22]],33],[2],[35],21,21,3,[3]);
-// list.unshift(22222222,222222,"2222222");
-// list = list.filter((value: any) => value > 0);
-// list.sort((a: any, b: any) => {
-//     if (a < b) {
-//         return -1;
-//     } else if (a > b) {
-//         return 1;
-//     }
-//     return 0;
-// });
-// list = list.removeDuplicates();
-// console.log(list.findDuplicate());
-// list = list.flat(Infinity);
-
-console.log(list);
-

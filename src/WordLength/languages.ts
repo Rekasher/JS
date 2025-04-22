@@ -18,6 +18,7 @@ const languages = {
 const allowedCharsPattern = Object.values(languages)
     .map(r => r.source)
     .map(src => src.replace(/^\[\^/, '').replace(/\]$/, ''))
+    .join('');
 const combinedLanguageRegex = new RegExp(`[^${allowedCharsPattern}]`, 'g');
 
 export {combinedLanguageRegex}
