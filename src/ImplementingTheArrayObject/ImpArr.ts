@@ -1,11 +1,13 @@
-class List {
-    private list: any[];
+class List<T = any> {
+    list: T[];
 
-    constructor(...args: any[]) {
+    [index: number]: T; // 👈 Add this line
+
+    constructor(...args: T[]) {
         this.list = args;
 
         return new Proxy(this, {
-            get(target: List, prop: string | symbol) {
+            get(target: List<T>, prop: string | symbol) {
                 if (typeof prop === 'string' && /^\d+$/.test(prop)) {
                     return target.list[+prop];
                 }
@@ -17,7 +19,7 @@ class List {
 
                 return undefined;
             },
-            set(target: List, prop: string | symbol, value: any) {
+            set(target: List<T>, prop: string | symbol, value: any) {
                 if (typeof prop === 'string' && /^\d+$/.test(prop)) {
                     target.list[+prop] = value;
                     return true;
@@ -28,15 +30,16 @@ class List {
         });
     }
 
-    push(...values: any[]) {
+
+    push(...values: T[]): number {
         values.forEach(value => {
-            this.list[this.list.length] = value;
+            this.list.push(value);
         });
 
         return this.list.length;
     }
 
-    unshift(...values: any[]) {
+    unshift(...values: T[]): number {
         this.list.forEach(listValue => {
             values[values.length] = listValue;
         });
@@ -46,16 +49,16 @@ class List {
         return this.list.length;
     }
 
-    pop() {
-        return +this.list.splice(this.list.length - 1)[0];
+    pop(): T {
+        return this.list.splice(this.list.length - 1)[0];
     }
 
-    shift() {
-        return +this.list.splice(0, 1)[0];
+    shift(): T {
+        return this.list.splice(0, 1)[0];
     }
 
-    filter(callback: Function): List {
-        const filtered = this.list.reduce((filterArr: any[], item: any, pos: number) => {
+    filter(callback: (item?: T, pos?: number, list?: T[]) => boolean): List {
+        const filtered = this.list.reduce((filterArr: any[], item: T) => {
             if (callback(item)) {
                 filterArr.push(item);
             }
@@ -65,8 +68,8 @@ class List {
         return new List(...filtered);
     }
 
-    sort(callback: Function | undefined): List {
 
+    sort(callback: ((a: T, B: T) => (1 | -1 | 0)) | undefined = undefined): List<T> {
         for (let j = this.list.length - 1; j > 0; j--) {
             for (let i = 0; i < j; i++) {
                 if (callback ? callback(this.list[i], this.list[i + 1]) === 1 : String(this.list[i]) > String(this.list[i + 1])) {
@@ -79,26 +82,27 @@ class List {
         return this
     }
 
-    findDuplicate() {
-        const numbersCountData = this.list.reduce((obj, item) => {
-            obj[item] = (obj[item] || 0) + 1;
-            return obj
-        }, {});
-
-        const duplicate = Object
-            .keys(numbersCountData)
-            .find(key => numbersCountData[key] === 2);
-        return duplicate !== undefined ? Number(duplicate) : false;
+    findDuplicate(): T | false {
+        const counts = new Map<T, number>();
+        for (const item of this.list) {
+            const count = counts.get(item) ?? 0;
+            counts.set(item, count + 1);
+        }
+        for (const [item, count] of counts) {
+            if (count === 2) return item;
+        }
+        return false;
     }
 
-    removeDuplicates(): List {
+
+    removeDuplicates(): List<T> {
         const unique = this.list.filter((item, index) => {
             return this.list.indexOf(item) === index;
         });
         return new List(...unique);
     }
 
-    sameWithList(arr: List): List {
+    sameWithList(arr: List): List<T> {
         const sameArr = this.list.filter((item, pos) => {
             return arr.list.indexOf(item) !== -1 && this.list.indexOf(item) === pos;
         });
@@ -122,12 +126,9 @@ class List {
 
     get length(): number {
         let count = 0
-        for (let element of this.list) {
+        for (let {} of this.list) {
             count++;
         }
         return count;
     }
-
 }
-
-let list: List = new List(1, 2, 3);
