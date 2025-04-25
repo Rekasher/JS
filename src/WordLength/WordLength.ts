@@ -1,12 +1,8 @@
 import {combinedLanguageRegex} from "./languages.js";
 
-const getWordsLength = (str) => {
+const getWordsLength = (str: string) => {
 
-    if (typeof str !== 'string') {
-        return 'Argument must be a string!';
-    }
-
-    const result = [];
+    const result: { word: string, count: number }[] = [];
 
     str.trim().split(/\s+/).forEach(word => {
 
