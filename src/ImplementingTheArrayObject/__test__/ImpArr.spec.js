@@ -12,8 +12,8 @@ describe('Work with array method without instance of array', () => {
 
         it('push more then one value', () => {
             const list = new List(1, 2, 3);
-            const pushed = list.push(10, 11, 12);
-            expect(list.list).toEqual([1, 2, 3, 10, 11, 12]);
+            const pushed = list.push(10, 11, 'hello');
+            expect(list.list).toEqual([1, 2, 3, 10, 11, 'hello']);
             expect(pushed).toEqual(6);
         });
 
@@ -49,7 +49,7 @@ describe('Work with array method without instance of array', () => {
             const list = new List(1, 2, 3);
             let length = list.length;
             expect(length).toEqual(3);
-            list.push(10, 2, 4);
+            list.push(10, 2, '34');
             length = list.length;
             expect(length).toEqual(6);
 

@@ -1,18 +1,13 @@
 const duplicateOrUnique = (arr) => {
-    const numbersData = {};
+    const numbersData = arr.reduce((obj, item) => {
+        obj[item] = (obj[item] || 0) + 1;
+        return obj
+    }, {});
 
-    for (let i = 0; i < arr.length; i++) {
-        numbersData[arr[i]] = (numbersData[arr[i]] || 0) + 1;
-    }
-
-    const isUnique = arr.length - Object.keys(numbersData).length === 1;
+    const dupUnique = arr.length - Object.keys(numbersData).length === 1 ? 2 : 1;
 
     for (const key in numbersData) {
-        if (isUnique && numbersData[key] === 2) {
-            return Number(key);
-        }
-
-        if (!isUnique && numbersData[key] === 1) {
+        if (numbersData[key] === dupUnique) {
             return Number(key);
         }
     }

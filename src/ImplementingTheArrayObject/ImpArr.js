@@ -42,17 +42,11 @@ class List {
     }
 
     pop() {
-        const pop = this.list[this.list.length - 1];
-        this.list = this.list.splice(0, this.list.length - 1);
-
-        return pop;
+       return +this.list.splice(this.list.length - 1).join('');
     }
 
     shift() {
-        const shift = this.list[0];
-        this.list = this.list.splice(1);
-
-        return shift;
+        return +this.list.splice(0,1).join('');
     }
 
     // +++
@@ -145,5 +139,10 @@ class List {
     }
 }
 
+let list = new List(1,2,3,'1', false, false)
+
+list = list.filter(2)
+
+console.log(list);
 
 export {List}
